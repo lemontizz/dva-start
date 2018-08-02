@@ -6,7 +6,7 @@ const Nav = ({
 	data
 }) => {
 	return (
-		<nav className="page-nav clearfix">
+		<nav className="page-nav manage clearfix">
 			<div className="logo">
 				<span className="windmill fa-spin"></span>
 				<span className="triangle"></span>

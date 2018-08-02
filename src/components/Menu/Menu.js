@@ -1,20 +1,52 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import styles from './Menu.css';
 import {
-	Link
+	NavLink
 } from "react-router-dom";
 
 const Menu = ({
 	data
 }) => {
 	return (
-		<div className="page-nav">
+		<menu id="page-manage-menu">
 			<ul>
-				<li><Link to="/Home">Home</Link></li>
-				<li><Link to="/AboutUs">AboutUs</Link></li>
-				<li><Link to="/Products">ProductList</Link></li>
+				<li>
+					<NavLink activeClassName="active" to="/Home">
+						<span>Home</span>
+					</NavLink>
+				</li>
+				<li>
+					<NavLink activeClassName="active" to="/MyAccount">
+						<span>My account</span>
+					</NavLink>
+				</li>
+				<li>
+					<NavLink activeClassName="active" to="/MyProject">
+						<span>My project</span>
+					</NavLink>
+				</li>
+				<li>
+					<NavLink activeClassName="active" to="/UploadProject">
+						<span>Upload project</span>
+					</NavLink>
+				</li>
+				<li>
+					<NavLink activeClassName="active" to="/UserManage">
+						<span>User management</span>
+					</NavLink>
+				</li>
+				<li>
+					<NavLink activeClassName="active" to="/Projects">
+						<span>Project management</span>
+					</NavLink>
+				</li>
+				<li>
+					<NavLink activeClassName="active" to="/Login">
+						<span>Login</span>
+					</NavLink>
+				</li>
 			</ul>
-		</div>
+		</menu>
 	)
 };
 

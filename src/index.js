@@ -12,16 +12,6 @@ const app = dva({
 		}, {
 			name: 'antd',
 			id: 2
-		}],
-		menu: [{
-			name: 'AboutUs',
-			path: '/AboutUs'
-		}, {
-			name: 'Home',
-			path: '/Home'
-		}, {
-			name: 'Login',
-			path: '/Login'
 		}]
 	}
 });

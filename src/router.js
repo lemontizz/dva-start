@@ -5,29 +5,21 @@ import {
 	Switch
 } from 'dva/router';
 import IndexPage from './routes/IndexPage/IndexPage';
-import AboutUs from './routes/AboutUs/AboutUs';
-import Products from './routes/Products/Products';
 import Login from './routes/Login/Login';
+import Register from './routes/Register/Register';
 
 function RouterConfig({
 	history
 }) {
 	return (
 		<Router history={history}>
-			<Switch>
+			<div>
 		        <Route path="/" exact component={IndexPage} />
-		        <Route component={NoMatch} />
-		    </Switch> 
+		        <Route path="/Login" component={Login} />
+		        <Route path="/Register" component={Register} />
+			</div>
 	    </Router>
 	);
 };
-
-const NoMatch = () => ({
-	location
-}) => (
-	<div>
-		<h3>No Match for <code>{location.pathname}</code> .</h3>
-	</div>
-);
 
 export default RouterConfig;
