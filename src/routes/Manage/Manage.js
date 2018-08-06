@@ -8,39 +8,6 @@ import Menu from '../../components/Menu/Menu';
 import Nav from '../../components/Nav/Nav';
 import Layout from '../../components/Layout/Layout';
 
-/*
-<Router>
-        <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/topics">Topics</Link>
-            </li>
-            <li>
-              <Link to="/login">login</Link>
-            </li>
-            <li>
-              <Link to="/Products">Products</Link>
-            </li>
-            <li>
-              <Link to="/UserManage">UserManage</Link>
-            </li>
-          </ul>
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/topics" component={Topics} />
-          <Route path="/login" component={Login} />
-          <Route path="/Products" component={Products} />
-          <Route path="/UserManage" component={UserManage} />
-        </div>
-      </Router>
-*/
-
 function Manage() {
   return (
       <Router>

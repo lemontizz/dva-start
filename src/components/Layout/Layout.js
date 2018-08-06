@@ -2,8 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Menu from '../Menu/Menu';
 import Nav from '../Nav/Nav';
-import styles from './Layout.less';
-import routes from '../Menu/MenuRoutes';
+import styles from './Layout.less'; 
+import AboutUs from '../../routes/AboutUs/AboutUs';
+import Products from '../../routes/Products/Products';
+import UserManage from '../../routes/UserManage/UserManage';
 
 const Layout = ({
 	dispatch
@@ -13,16 +15,8 @@ const Layout = ({
 			<div className={styles['page-wrapper']}>
 				<Nav></Nav>
 				<Menu></Menu>
-				<div className="page-cont">
-					{routes.map((route, index) => (
-			          <Route
-			            key={index}
-			            path={route.path}
-			            exact={route.exact}
-			            component={route.main()}
-			          />
-			        ))}
-				</div>
+				<Route path="/Products" component={Products} />
+		    	<Route path="/UserManage" component={UserManage} />
 			</div>
 		</Router>
 	);

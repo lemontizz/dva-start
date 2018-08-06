@@ -9,26 +9,39 @@ const Login = ({
 	dispatch,
 	login
 }) => {
+	let methods = {
+		focus(key) {
+			dispatch({
+				type: 'login/focus',
+				payload: key
+			});
+		},
+		blur(flag) {
+			dispatch({
+				type: 'login/blur',
+				payload: flag
+			});
+		}
+	};
 
 	return (
 		<div>
 			<div className="register-head">
-		        <div className="text">Thank you for logging in</div>
+		        <div className="text">Thank you for logging in {login.focusEl} </div>
 		    </div>
-
 		    <div className="register-body" id="login-body">
 		        <h2>Login FED</h2>
 		        <div className="form-item">
 		            <div className="textbox">
-		                <input type="text" id="username" max="18" />
+		                <input type="text" autoComplete="off" onFocus={() => methods.focus('username')} onBlur={() => methods.blur('')} id="username" max="18" />
 		            </div>
-		            <label className="label">Username / Email</label>
+		            <label className={`label ${login.focusEl == 'username' ? 'top' : ''}`}>Username / Email</label>
 		        </div>
 		        <div className="form-item">
 		            <div className="textbox">
-		                <input type="password" id="password" max="18" />
+		                <input type="password" autoComplete="off" onFocus={() => methods.focus('password')} onBlur={() => methods.blur('')} id="password" max="18" />
 		            </div>
-		            <label className="label">Password</label>
+		            <label className={`label ${login.focusEl == 'password' ? 'top' : ''}`}>Password</label>
 		        </div>
 		        <div className="form-btn">
 		            <button id="submit"><i className="fa fa-spinner fa-pulse fa-fw icon"></i>Submit</button>
@@ -41,4 +54,8 @@ const Login = ({
 	)
 }
 
-export default Login;
+export default connect(({
+	login
+}) => ({
+	login
+}))(Login);

@@ -1,18 +1,12 @@
 import dva from 'dva';
 import createLoading from 'dva-loading';
 import './index.css';
+import './styles/font-awesome.css';
 
 // 1. Initialize
 // const app = dva();
 const app = dva({
 	initialState: {
-		products: [{
-			name: 'dva',
-			id: 1
-		}, {
-			name: 'antd',
-			id: 2
-		}]
 	}
 });
 
@@ -25,6 +19,7 @@ app.use(createLoading({
 // 3. Model
 // app.model(require('./models/example').default);
 app.model(require('./models/menu/menu').default);
+app.model(require('./models/login/login').default);
 app.model(require('./models/products/products').default);
 
 // 4. Router

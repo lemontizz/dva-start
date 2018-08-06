@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import styles from './UserManage.css';
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 const UserManage = ({
 	dispatch

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import {
 	connect
 } from 'dva';
@@ -18,19 +18,19 @@ const Register = ({
 		        <h2>Account Profile</h2>
 		        <div className="form-item">
 		            <div className="textbox">
-		                <input type="email" id="email" />
+		                <input type="email" autocomplete="off" id="email" />
 		            </div>
 		            <label className="label">Email</label>
 		        </div>
 		        <div className="form-item">
 		            <div className="textbox">
-		                <input type="text" id="username" max="18" />
+		                <input type="text" autocomplete="off" id="username" max="18" />
 		            </div>
 		            <label className="label">Username</label>
 		        </div>
 		        <div className="form-item">
 		            <div className="textbox">
-		                <input type="password" id="password" max="18" />
+		                <input type="password" autocomplete="off" id="password" max="18" />
 		            </div>
 		            <label className="label">Password</label>
 		            <div className="password-vali">
@@ -44,7 +44,7 @@ const Register = ({
 		        </div>
 		        <div className="form-item confirm-password">
 		            <div className="textbox">
-		                <input type="password" id="confirm-password" />
+		                <input type="password" autocomplete="off" id="confirm-password" />
 		            </div>
 		            <label className="label">Confirm Password</label>
 		            <div className="password-vali">
@@ -57,7 +57,7 @@ const Register = ({
 		            <button id="submit"><i className="fa fa-spinner fa-pulse fa-fw icon"></i>Submit</button>
 		        </div>
 		        <div className="info">
-		            Existing account, <NavLink to="/Login" className="text-link">login</NavLink>
+		            Existing account, <Link to="/Login" className="text-link">login</Link>
 		        </div>
 		    </div>
 		</div>
