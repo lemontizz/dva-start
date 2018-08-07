@@ -8,7 +8,8 @@ let defaultOpts = {
 	data: {}
 };
 
-let request = function(options) {
+function request(options) {
+	console.log('requesttttttttttttt');
 	let opts = Object.assign({}, defaultOpts, options),
 		params,
 		xhr, 
@@ -17,9 +18,12 @@ let request = function(options) {
 		promise = new Promise(function(resolve, reject) {
 			xhr = new XMLHttpRequest();
 
+			console.log('[[[[[[[fetchxxxxxxxxxxx', opts);
+
 			xhr.open(opts.method, opts.url, true);
 
 			xhr.onload = function(response) {
+				console.log('xxxxxxxxxxxxxxxxxx')
 				let data = response,
 					status = xhr.status;
 
@@ -32,7 +36,7 @@ let request = function(options) {
 				if(status >= 200 && status < 400) {
 					resolve({data, response, xhr});
 				} else {
-					console.error('status Code is:' + status, opts.url, data, response);
+					console.warn('status Code is:' + status, opts.url, data, response);
 				}
 			};
 
@@ -43,11 +47,16 @@ let request = function(options) {
 			xhr.timeout = function() {
 				console.log('ajax timeout', opts.url)
 			};
+
+			xhr.send();
 		});
 
 		promise.xhr = xhr;
 
+		console.log('promise', promise);
+
 		return promise;
-};
+}
 
 export default request;
+

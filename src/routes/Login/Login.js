@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'dva';
 import style from './Login.css';
 import Tip from '../../components/Layer/Tip';
+import * as loginService from '../../services/login';
+import request from '../../scripts/request';
 
 const Login = ({
 	dispatch,
@@ -29,11 +31,40 @@ const Login = ({
 				}
 			});
 		},
+		validate() {
+			let username = login.username,
+				password = login.password;
 
-		submit() {
+			if(!username) {
+				dispatch({
+					type: 'login/toggleUserNameTip',
+					payload: true
+				});
+				return false;
+			}
+			if(!password) {
+				dispatch({
+					type: 'login/togglePasswordTip',
+					payload: true
+				});
+				return false;
+			}
+			return true;
+		},
+		async submit() {
+			// let result = await request({
+			//   	url: '/api/login',
+			//   	method: 'POST',
+			//   	data: JSON.stringify({username: 'xx', password: 'ww'})
+			// });
+			// let result = await loginService.login({username: 'xx', password: 'xxx'})
+
+
+			if(!methods.validate()) return;
+			
 			dispatch({
 				type: 'login/submit'
-			})
+			});
 		}
 	};
 
@@ -46,23 +77,27 @@ const Login = ({
 		        <h2>Login FED</h2>
 		        <div className="form-item" id="username-item">
 		            <div className="textbox">
-		                <input type="text" autoComplete="off" max="18" 
+		                <input  type="text" autoComplete="off" max="18" 
 		                	id="username"
+		                	ref={(input) => {this.usernameInput = input;}}
 		                	onFocus={() => methods.focus('username')} 
 		                	onBlur={() => methods.blur('')} 
 		                	onChange={e => methods.changeUsername('username', e.target.value)}
 		                 />
-		                 <Tip text={'请输入用户名'} id="username"></Tip>
+		                 <Tip text={'请输入用户名'} show={login.showUsernameTip} id="username"></Tip>
 		            </div>
 		            <label className={`label ${login.focusEl == 'username' || login.username.length ? 'top' : ''}`}>Username / Email</label>
 		        </div>
 		        <div className="form-item">
 		            <div className="textbox">
-		                <input type="password" autoComplete="off" max="18" 
+		                <input refs="password" type="password" autoComplete="off" max="18" 
+		                	id="password"
+		                	ref={(input) => {this.passwordInput = input;}}
 		                	onFocus={() => methods.focus('password')} 
 		                	onBlur={() => methods.blur('')} 
 		                	onChange={e => methods.changeUsername('password', e.target.value)}
 		                 />
+		                 <Tip text={'请输入密码'} show={login.showPasswordTip} id="password"></Tip>
 		            </div>
 		            <label className={`label ${login.focusEl == 'password' || login.password.length ? 'top' : ''}`}>Password</label>
 		        </div>

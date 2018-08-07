@@ -1,6 +1,9 @@
 .page-tip {
 	position: absolute;
 }
+.page-tip.hide {
+	display: none;
+}
 .page-tip .content {
 	position: relative;
 	line-height: 22px;
@@ -21,11 +24,28 @@
     border-width: 8px;
     border-color: transparent;
     border-style: dashed;
-    top: 5px;
     border-bottom-style: solid;
-    border-bottom-color: #000;
     font-family: Bookman Old Style;
     line-height: 22px;
     font-size: 12px;
-    left: -8px;
+}
+.page-tip.left.top {
+	left: 100%;
+	margin-left: 15px;
+	bottom: 0;
+}
+.page-tip.left.top .triangle {
+	top: 5px;
+	left: -8px;
+	border-bottom-color: #000;
+}
+.page-tip.bottom.right {
+	right: 0;
+	bottom: 10px;
+}
+.page-tip.bottom.right .triangle {
+	bottom: -8px;
+	left: 5px;
+    border-right-style: solid;
+    border-right-color: #000;
 }
