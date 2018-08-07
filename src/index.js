@@ -21,6 +21,8 @@ app.use(createLoading({
 app.model(require('./models/menu/menu').default);
 app.model(require('./models/login/login').default);
 app.model(require('./models/products/products').default);
+app.model(require('./models/global/common').default);
+app.model(require('./models/global/user').default);
 
 // 4. Router
 app.router(require('./router').default);

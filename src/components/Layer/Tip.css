@@ -1,0 +1,31 @@
+.page-tip {
+	position: absolute;
+}
+.page-tip .content {
+	position: relative;
+	line-height: 22px;
+	min-width: 12px;
+	padding: 8px 15px;
+	font-size: 12px;
+	float: left;
+	border-radius: 2px;
+	box-shadow: 1px 1px 3px rgba(0,0,0,.2);
+	background-color: #000;
+	color: #fff;
+	white-space: nowrap;
+}
+.page-tip .triangle {
+	position: absolute;
+    width: 0;
+    height: 0;
+    border-width: 8px;
+    border-color: transparent;
+    border-style: dashed;
+    top: 5px;
+    border-bottom-style: solid;
+    border-bottom-color: #000;
+    font-family: Bookman Old Style;
+    line-height: 22px;
+    font-size: 12px;
+    left: -8px;
+}
