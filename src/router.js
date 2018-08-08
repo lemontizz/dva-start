@@ -9,6 +9,7 @@ import IndexPage from './routes/IndexPage/IndexPage';
 import Login from './routes/Login/Login';
 import Register from './routes/Register/Register';
 import Home from './routes/Home/Home';
+import Prompt from './components/Layer/Prompt';
 
 function RouterConfig({
 	history
@@ -16,6 +17,7 @@ function RouterConfig({
 	return (
 		<Router history={history}>
 			<div>
+				<Prompt></Prompt>
 				<Route path="/" exact component={IndexPage} />
 				<Route path="/Home" exact component={IndexPage} />
 		        <Route path="/Login" component={Login} />

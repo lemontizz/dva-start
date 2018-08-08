@@ -51,15 +51,10 @@ const Login = ({
 			}
 			return true;
 		},
-		async submit() {
-			// let result = await request({
-			//   	url: '/api/login',
-			//   	method: 'POST',
-			//   	data: JSON.stringify({username: 'xx', password: 'ww'})
-			// });
-			// let result = await loginService.login({username: 'xx', password: 'xxx'})
-
-
+		async submit(e) {
+			if(e) {
+				if(e.key !== 'Enter') return;
+			}
 			if(!methods.validate()) return;
 			
 			dispatch({
@@ -82,6 +77,7 @@ const Login = ({
 		                	ref={(input) => {this.usernameInput = input;}}
 		                	onFocus={() => methods.focus('username')} 
 		                	onBlur={() => methods.blur('')} 
+		                	onKeyPress={(e) => methods.submit(e)}
 		                	onChange={e => methods.changeUsername('username', e.target.value)}
 		                 />
 		                 <Tip text={'请输入用户名'} show={login.showUsernameTip} id="username"></Tip>
@@ -95,6 +91,7 @@ const Login = ({
 		                	ref={(input) => {this.passwordInput = input;}}
 		                	onFocus={() => methods.focus('password')} 
 		                	onBlur={() => methods.blur('')} 
+		                	onKeyPress={(e) => methods.submit(e)}
 		                	onChange={e => methods.changeUsername('password', e.target.value)}
 		                 />
 		                 <Tip text={'请输入密码'} show={login.showPasswordTip} id="password"></Tip>
@@ -102,7 +99,7 @@ const Login = ({
 		            <label className={`label ${login.focusEl == 'password' || login.password.length ? 'top' : ''}`}>Password</label>
 		        </div>
 		        <div className="form-btn">
-		            <button onClick={methods.submit}><i className="fa fa-spinner fa-pulse fa-fw icon"></i>Submit</button>
+		            <button onClick={() => methods.submit()}><i className="fa fa-spinner fa-pulse fa-fw icon"></i>Submit</button>
 		        </div>
 		        <div className="info">
 		            No account, <NavLink to="/Register" className="text-link">register</NavLink> one
@@ -113,7 +110,9 @@ const Login = ({
 }
 
 export default connect(({
-	login
+	login,
+	globalConfig
 }) => ({
-	login
+	login,
+	globalConfig
 }))(Login);
