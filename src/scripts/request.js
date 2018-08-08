@@ -9,7 +9,6 @@ let defaultOpts = {
 };
 
 function request(options) {
-	console.log('requesttttttttttttt');
 	let opts = Object.assign({}, defaultOpts, options),
 		params,
 		xhr, 
@@ -18,12 +17,9 @@ function request(options) {
 		promise = new Promise(function(resolve, reject) {
 			xhr = new XMLHttpRequest();
 
-			console.log('[[[[[[[fetchxxxxxxxxxxx', opts);
-
 			xhr.open(opts.method, opts.url, true);
 
 			xhr.onload = function(response) {
-				console.log('xxxxxxxxxxxxxxxxxx')
 				let data = response,
 					status = xhr.status;
 
@@ -48,12 +44,20 @@ function request(options) {
 				console.log('ajax timeout', opts.url)
 			};
 
-			xhr.send();
+			if(opts.contentType) {
+				xhr.setRequestHeader('Content-Type', 'application/json');	
+			}
+
+			if(opts.headers) {
+				for(let key in opts.headers) {
+					xhr.setRequestHeader(key, opts.headers[key]);
+				}
+			}
+
+			xhr.send(opts.data ? opts.data : null);
 		});
 
 		promise.xhr = xhr;
-
-		console.log('promise', promise);
 
 		return promise;
 }

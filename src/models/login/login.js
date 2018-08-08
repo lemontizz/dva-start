@@ -71,9 +71,14 @@ export default {
 	},
 	effects: {
 		*submit(action, {call, put, select}) {
+			let username = yield select(state => state.login.username),
+				password = yield select(state => state.login.password);
+
+			console.log(username, password, 'xx');
+
 			let result = yield call(loginService.login, {
-				username: yield select(state => state.username),
-				password: yield select(state => state.password)
+				username,
+				password: escape(password)
 			});
 			console.log('999999');
 			console.log(result);
